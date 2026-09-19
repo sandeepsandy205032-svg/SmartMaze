@@ -1,0 +1,412 @@
+/* ==========================================================================
+   SMARTMAZE COMMON REUSABLE COMPONENTS STYLES
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PrimaryButton Styles
+   -------------------------------------------------------------------------- */
+.smartmaze-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.875rem 2rem;
+  background-color: var(--color-stone);
+  color: var(--color-soft-ivory);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--surface-secondary-border-hover);
+  border-radius: var(--radius-xs);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--duration-fast) var(--ease-tactile),
+              background-color var(--duration-fast) var(--ease-tactile),
+              border-color var(--duration-fast) var(--ease-tactile),
+              box-shadow var(--duration-fast) var(--ease-tactile);
+}
+
+.smartmaze-primary-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #343e36;
+  border-color: rgba(216, 205, 184, 0.35);
+  box-shadow: 0 10px 28px -8px rgba(0, 0, 0, 0.5);
+}
+
+.smartmaze-primary-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+  background-color: var(--color-stone);
+  border-color: var(--color-antique-amber);
+}
+
+.smartmaze-primary-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.smartmaze-primary-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-fast) var(--ease-tactile);
+}
+
+.smartmaze-primary-btn:hover:not(:disabled) .smartmaze-primary-btn__icon--trailing {
+  transform: translateX(3px);
+}
+
+.smartmaze-primary-btn:hover:not(:disabled) .smartmaze-primary-btn__icon--leading {
+  transform: translateX(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   GhostButton Styles
+   -------------------------------------------------------------------------- */
+.smartmaze-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 0.75rem 1.25rem;
+  background-color: transparent;
+  color: var(--color-warm-sand);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--duration-fast) var(--ease-cinematic),
+              background-color var(--duration-fast) var(--ease-cinematic),
+              border-color var(--duration-fast) var(--ease-cinematic),
+              transform var(--duration-fast) var(--ease-cinematic);
+}
+
+.smartmaze-ghost-btn:hover:not(:disabled) {
+  color: var(--color-soft-ivory);
+  background-color: rgba(216, 205, 184, 0.05);
+  border-color: rgba(216, 205, 184, 0.12);
+  transform: translateY(-1px);
+}
+
+.smartmaze-ghost-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  background-color: rgba(216, 205, 184, 0.08);
+}
+
+.smartmaze-ghost-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   SecondarySurface Styles
+   -------------------------------------------------------------------------- */
+.smartmaze-secondary-surface {
+  background-color: var(--surface-secondary-bg);
+  border: 1px solid var(--surface-secondary-border);
+  backdrop-filter: blur(var(--surface-blur-radius));
+  -webkit-backdrop-filter: blur(var(--surface-blur-radius));
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-medium) var(--ease-cinematic),
+              background-color var(--duration-medium) var(--ease-cinematic),
+              box-shadow var(--duration-medium) var(--ease-cinematic);
+}
+
+.smartmaze-secondary-surface--interactive:hover {
+  background-color: var(--surface-secondary-bg-hover);
+  border-color: var(--surface-secondary-border-hover);
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .smartmaze-primary-btn,
+  .smartmaze-ghost-btn,
+  .smartmaze-secondary-surface {
+    transition-duration: 0.01ms !important;
+  }
+  
+  .smartmaze-primary-btn:hover:not(:disabled),
+  .smartmaze-ghost-btn:hover:not(:disabled) {
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MazeLoadingSpinner Architectural Buffering Visual
+   -------------------------------------------------------------------------- */
+.smartmaze-loading-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  pointer-events: none;
+}
+
+.smartmaze-loading-mechanism {
+  width: 96px;
+  height: 96px;
+  position: relative;
+}
+
+.smartmaze-loading-svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+.smartmaze-loading-circle-outer {
+  stroke: rgba(216, 205, 184, 0.15);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 4;
+}
+
+.smartmaze-loading-arc-1 {
+  stroke: var(--color-warm-sand);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 60 120;
+  transform-origin: center;
+  animation: mazeArcRotate 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.smartmaze-loading-arc-2 {
+  stroke: var(--color-muted-sage);
+  stroke-width: 2;
+  stroke-dasharray: 40 80;
+  transform-origin: center;
+  animation: mazeArcRotateReverse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.smartmaze-loading-arc-3 {
+  stroke: var(--color-antique-amber);
+  stroke-width: 1.5;
+  stroke-dasharray: 20 40;
+  transform-origin: center;
+  animation: mazeArcRotate 1.6s linear infinite;
+}
+
+.smartmaze-loading-center {
+  fill: var(--color-soft-ivory);
+  animation: mazeCenterPulse 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes mazeArcRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes mazeArcRotateReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes mazeCenterPulse {
+  0% { opacity: 0.4; transform: scale(0.8); transform-origin: center; }
+  100% { opacity: 1; transform: scale(1.15); transform-origin: center; }
+}
+
+.smartmaze-loading-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.smartmaze-loading-title-text {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-soft-ivory);
+  font-weight: 600;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.smartmaze-loading-meta-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-antique-amber);
+}
+
+/* --------------------------------------------------------------------------
+   GlassContainer Architectural Glass Panel Styles
+   -------------------------------------------------------------------------- */
+.smartmaze-glass-container {
+  position: relative;
+  background: rgba(14, 20, 16, 0.48);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(216, 205, 184, 0.18);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(216, 205, 184, 0.22);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.smartmaze-glass--primary {
+  border-color: rgba(216, 205, 184, 0.2);
+}
+
+.smartmaze-glass--secondary {
+  background: rgba(18, 24, 20, 0.38);
+  border-color: rgba(216, 205, 184, 0.12);
+}
+
+.smartmaze-glass--subdued {
+  background: rgba(12, 16, 13, 0.30);
+  border-color: rgba(216, 205, 184, 0.08);
+}
+
+.smartmaze-glass--interactive {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.smartmaze-glass--interactive:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200, 159, 101, 0.45);
+  box-shadow: 0 30px 80px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(200, 159, 101, 0.2);
+}
+
+.smartmaze-glass-inner-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.smartmaze-glass-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------------------------------------------
+   ExpeditionLoadingModal — Full Screen Game Loading & Theme Transition Modal
+   -------------------------------------------------------------------------- */
+.smartmaze-expedition-loading-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 120;
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+.smartmaze-loading-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 11, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.smartmaze-loading-card {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.75rem 3.25rem;
+  background: rgba(18, 24, 20, 0.94);
+  border: 1px solid rgba(216, 205, 184, 0.22);
+  border-radius: 24px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85), 0 0 50px rgba(200, 159, 101, 0.25), inset 0 1px 0 rgba(216, 205, 184, 0.3);
+  text-align: center;
+  max-width: 580px;
+  width: 90%;
+  animation: modalScaleGlow 0.45s var(--ease-cinematic) forwards;
+}
+
+.smartmaze-loading-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.smartmaze-loading-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-loading-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+}
+
+.smartmaze-loading-sub {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--color-warm-sand);
+  opacity: 0.75;
+}
+
+.smartmaze-progress-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.smartmaze-progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(216, 205, 184, 0.15);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.smartmaze-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c89f65 0%, #e8ba7a 100%);
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(232, 186, 122, 0.6);
+  transition: width 0.35s ease;
+}
+
+.smartmaze-progress-percent {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-antique-amber);
+  min-width: 45px;
+  text-align: right;
+}
+
+.smartmaze-loading-footer {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--color-muted-sage);
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+

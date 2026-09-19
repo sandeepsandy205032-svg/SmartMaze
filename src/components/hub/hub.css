@@ -1,0 +1,811 @@
+/* ==========================================================================
+   SMARTMAZE ARCHITECTURAL HUB STYLES (Reference Alignment)
+   ========================================================================== */
+
+/* Full Viewport Container */
+.smartmaze-hub-page-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 640px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  box-sizing: border-box;
+  z-index: 20;
+  color: var(--color-soft-ivory);
+  font-family: 'Inter', system-ui, sans-serif;
+  user-select: none;
+}
+
+/* ==========================================================================
+   TOP NAVIGATION HEADER BAR
+   ========================================================================== */
+
+.smartmaze-hub-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 30;
+}
+
+.smartmaze-hub-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.smartmaze-brand-compass-icon {
+  font-size: 1.3rem;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-brand-main {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+  line-height: 1;
+}
+
+.smartmaze-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--color-warm-sand);
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}
+
+.smartmaze-hub-header-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.smartmaze-header-nav-link {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 205, 184, 0.2);
+  border-radius: var(--radius-pill, 9999px);
+  color: var(--color-soft-ivory);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.smartmaze-header-nav-link:hover {
+  background: rgba(232, 186, 122, 0.15);
+  border-color: var(--color-antique-amber);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.smartmaze-header-nav-link--challenges {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.35);
+  color: #f3e5ab;
+}
+
+.smartmaze-header-nav-link--challenges:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #d4af37;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.smartmaze-hub-quote-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(244, 242, 235, 0.65);
+  font-style: italic;
+}
+
+.smartmaze-quote-divider {
+  font-size: 0.7rem;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-hub-profile-area {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.smartmaze-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(18, 24, 20, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(216, 205, 184, 0.15);
+  border-radius: var(--radius-pill);
+}
+
+.smartmaze-profile-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8ba7a 0%, #c89f65 60%, #8a6532 100%);
+  color: #101411;
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smartmaze-profile-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.smartmaze-profile-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-profile-title {
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-header-settings-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(216, 205, 184, 0.15);
+  color: var(--color-warm-sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-header-settings-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-soft-ivory);
+  border-color: var(--color-antique-amber);
+}
+
+/* ==========================================================================
+   CENTERED HERO STAGE (PREMIUM GLASS CONTAINER & UNIQUE OPTION MONOLITHS)
+   ========================================================================== */
+
+.smartmaze-hub-center-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1120px;
+  flex: 1;
+  min-height: 480px;
+  max-height: 640px;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  z-index: 25;
+  position: relative;
+}
+
+/* Central Glass Hero Container */
+.smartmaze-hub-hero-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 2.5rem;
+  border-radius: 24px;
+  box-sizing: border-box;
+  background: rgba(14, 20, 16, 0.42);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(216, 205, 184, 0.18);
+  box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(216, 205, 184, 0.22);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  overflow: hidden;
+}
+
+.smartmaze-hub-hero-container:hover {
+  border-color: rgba(232, 186, 122, 0.45);
+  box-shadow: 0 35px 90px -10px rgba(0, 0, 0, 0.8), 0 0 45px rgba(200, 159, 101, 0.22), inset 0 1px 0 rgba(232, 186, 122, 0.4);
+}
+
+.smartmaze-hub-reveal-active {
+  animation: hubUnfoldReveal 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.smartmaze-hero-content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  max-width: 1020px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.smartmaze-hero-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.smartmaze-welcome-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-hero-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
+}
+
+.smartmaze-hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--color-warm-sand);
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+
+/* 4 Unique Architectural Option Monolith Tiles Grid */
+.smartmaze-option-monoliths-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.35rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.smartmaze-option-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+  padding: 1.35rem 1.25rem;
+  background: linear-gradient(155deg, rgba(26, 36, 30, 0.55) 0%, rgba(14, 20, 16, 0.75) 100%);
+  border: 1px solid rgba(216, 205, 184, 0.14);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.35s ease;
+}
+
+.smartmaze-option-tile:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--tile-accent, var(--color-antique-amber));
+  background: linear-gradient(155deg, rgba(35, 48, 40, 0.7) 0%, rgba(18, 24, 20, 0.85) 100%);
+  box-shadow: 0 22px 50px -10px rgba(0, 0, 0, 0.75),
+    0 0 30px var(--tile-accent, rgba(200, 159, 101, 0.3)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.smartmaze-option-tile--active {
+  border-color: var(--color-antique-amber) !important;
+  background: linear-gradient(155deg, rgba(40, 56, 46, 0.8) 0%, rgba(20, 28, 23, 0.9) 100%) !important;
+  box-shadow: 0 20px 55px -5px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(232, 186, 122, 0.35),
+    inset 0 1px 0 rgba(232, 186, 122, 0.4) !important;
+}
+
+.smartmaze-tile-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.smartmaze-tile-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--tile-accent, var(--color-antique-amber));
+  opacity: 0.9;
+}
+
+.smartmaze-tile-rune-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(12, 18, 14, 0.65);
+  border: 1px solid rgba(216, 205, 184, 0.2);
+  color: var(--tile-accent, var(--color-antique-amber));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.smartmaze-option-tile:hover .smartmaze-tile-rune-badge {
+  transform: rotate(15deg) scale(1.1);
+  border-color: var(--tile-accent, var(--color-antique-amber));
+  box-shadow: 0 0 15px var(--tile-accent, rgba(200, 159, 101, 0.4));
+}
+
+.smartmaze-tile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0.65rem 0;
+}
+
+.smartmaze-tile-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.smartmaze-tile-desc {
+  font-size: 0.75rem;
+  color: var(--color-muted-sage);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.smartmaze-tile-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(216, 205, 184, 0.12);
+  border-radius: var(--radius-pill);
+  transition: all 0.25s ease;
+}
+
+.smartmaze-tile-action-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-tile-action-arrow {
+  font-size: 0.85rem;
+  color: var(--tile-accent, var(--color-antique-amber));
+  transition: transform 0.25s ease;
+}
+
+.smartmaze-option-tile:hover .smartmaze-tile-action-bar {
+  background: var(--tile-accent, var(--color-antique-amber));
+  border-color: var(--tile-accent, var(--color-antique-amber));
+}
+
+.smartmaze-option-tile:hover .smartmaze-tile-action-label {
+  color: #101411;
+}
+
+.smartmaze-option-tile:hover .smartmaze-tile-action-arrow {
+  color: #101411;
+  transform: translateX(4px);
+}
+
+.smartmaze-tile-corner-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: radial-gradient(circle at top right, var(--tile-accent, rgba(200, 159, 101, 0.35)), transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.smartmaze-option-tile:hover .smartmaze-tile-corner-accent {
+  opacity: 1;
+}
+
+.smartmaze-hero-action-row {
+  margin-top: 1rem;
+}
+
+/* Guidance & Footer Subtitles */
+.smartmaze-container-footer-guidance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.smartmaze-guidance-pill {
+  padding: 0.35rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(216, 205, 184, 0.1);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-container-footer-sub {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  color: var(--color-warm-sand);
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   PAGE FOOTER ROW
+   ========================================================================== */
+
+.smartmaze-hub-page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: rgba(244, 242, 235, 0.55);
+  z-index: 30;
+}
+
+.smartmaze-page-quote {
+  font-style: italic;
+}
+
+.smartmaze-reset-entrance-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-muted-sage);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.smartmaze-reset-entrance-btn:hover {
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-page-version {
+  color: var(--color-muted-sage);
+}
+
+/* ==========================================================================
+   SETTINGS MODAL OVERLAY (HUB -> SETTINGS -> THEME)
+   ========================================================================== */
+
+.smartmaze-settings-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: modalFadeIn 0.35s ease-out forwards;
+}
+
+.smartmaze-settings-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 11, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.smartmaze-settings-modal {
+  position: relative;
+  width: 92%;
+  max-width: 920px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 2.25rem 2.5rem;
+  background: rgba(18, 24, 20, 0.92);
+  border: 1px solid rgba(216, 205, 184, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(216, 205, 184, 0.2);
+  z-index: 10;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.smartmaze-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(216, 205, 184, 0.1);
+}
+
+.smartmaze-settings-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+}
+
+.smartmaze-settings-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--color-warm-sand);
+  opacity: 0.7;
+}
+
+.smartmaze-settings-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.smartmaze-section-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-section-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: var(--color-soft-ivory);
+  margin: 0;
+}
+
+.smartmaze-section-desc {
+  font-size: 0.8rem;
+  color: var(--color-muted-sage);
+  margin: 0 0 1.25rem 0;
+  line-height: 1.5;
+}
+
+.smartmaze-theme-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.smartmaze-theme-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(25, 34, 28, 0.5);
+  border: 1px solid rgba(216, 205, 184, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.smartmaze-theme-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(216, 205, 184, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.smartmaze-theme-card--selected {
+  border-color: var(--color-antique-amber) !important;
+  background: rgba(35, 48, 39, 0.7) !important;
+  box-shadow: 0 14px 40px rgba(200, 159, 101, 0.25) !important;
+}
+
+.smartmaze-theme-card-art-container {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  overflow: hidden;
+}
+
+.smartmaze-theme-card-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+
+.smartmaze-theme-card:hover .smartmaze-theme-card-art {
+  transform: scale(1.04);
+}
+
+.smartmaze-theme-card-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 24, 20, 0.9) 0%, transparent 60%);
+}
+
+.smartmaze-active-theme-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  background: rgba(200, 159, 101, 0.95);
+  color: #101411;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.smartmaze-theme-card-info {
+  padding: 1rem 1.25rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.smartmaze-theme-card-name {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-theme-card--selected .smartmaze-theme-card-name {
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-theme-card-desc {
+  font-size: 0.78rem;
+  color: rgba(244, 242, 235, 0.7);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.smartmaze-theme-card-subtext {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted-sage);
+  margin-top: 0.25rem;
+}
+
+.smartmaze-access-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(216, 205, 184, 0.1);
+  border-radius: 12px;
+}
+
+.smartmaze-access-label {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-access-desc {
+  font-size: 0.75rem;
+  color: var(--color-muted-sage);
+  margin: 0.2rem 0 0 0;
+}
+
+.smartmaze-access-toggle {
+  padding: 0.5rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 205, 184, 0.2);
+  border-radius: 6px;
+  color: var(--color-warm-sand);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-access-toggle--active {
+  background: rgba(200, 159, 101, 0.2);
+  border-color: var(--color-antique-amber);
+  color: var(--color-antique-amber);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .smartmaze-option-monoliths-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .smartmaze-option-monoliths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .smartmaze-hub-hero-container {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .smartmaze-hub-page-root {
+    padding: 0.75rem 1rem;
+  }
+}

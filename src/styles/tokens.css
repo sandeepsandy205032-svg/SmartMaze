@@ -1,0 +1,69 @@
+/* ==========================================================================
+   SMARTMAZE DESIGN TOKENS
+   Color Palette: Deep Forest, Muted Sage, Warm Sand, Soft Ivory, Stone, Charcoal, Antique Amber
+   Strict Rule: Muted, atmospheric, physical palette. NO bright neon colors.
+   ========================================================================== */
+
+:root {
+  /* Primary Muted Palette */
+  --color-deep-forest: #101914;
+  --color-deep-forest-rgb: 16, 25, 20;
+
+  --color-muted-sage: #5c7063;
+  --color-muted-sage-rgb: 92, 112, 99;
+
+  --color-warm-sand: #d8cdb8;
+  --color-warm-sand-rgb: 216, 205, 184;
+
+  --color-soft-ivory: #f4f2eb;
+  --color-soft-ivory-rgb: 244, 242, 235;
+
+  --color-stone: #2a322c;
+  --color-stone-rgb: 42, 50, 44;
+
+  --color-charcoal: #151816;
+  --color-charcoal-rgb: 21, 24, 22;
+
+  /* Secondary Accent (Subtle Antique Amber, used sparingly for active indicators) */
+  --color-antique-amber: #c89f65;
+  --color-antique-amber-rgb: 200, 159, 101;
+
+  /* Environmental Overlays & Desaturation */
+  --color-sage-overlay: rgba(18, 26, 22, 0.84);
+  --color-backdrop-scrim: rgba(12, 18, 14, 0.72);
+
+  /* Secondary Glass & Surface Tokens (Secondary surfaces only, open space is primary) */
+  --surface-secondary-bg: rgba(22, 30, 25, 0.45);
+  --surface-secondary-bg-hover: rgba(30, 42, 34, 0.55);
+  --surface-secondary-border: rgba(216, 205, 184, 0.10);
+  --surface-secondary-border-hover: rgba(216, 205, 184, 0.25);
+  --surface-secondary-border-active: rgba(200, 159, 101, 0.40);
+  --surface-blur-radius: 16px;
+
+  /* Geometry & Subtle Line Tokens */
+  --line-subtle: rgba(216, 205, 184, 0.08);
+  --line-accent: rgba(216, 205, 184, 0.18);
+  --line-active: rgba(200, 159, 101, 0.35);
+
+  /* Spacing Scale (8pt grid system) */
+  --space-2xs: 0.25rem; /* 4px */
+  --space-xs:  0.5rem;  /* 8px */
+  --space-sm:  0.75rem; /* 12px */
+  --space-md:  1rem;    /* 16px */
+  --space-lg:  1.5rem;  /* 24px */
+  --space-xl:  2rem;    /* 32px */
+  --space-2xl: 3rem;    /* 48px */
+  --space-3xl: 4.5rem;  /* 72px */
+  --space-4xl: 6rem;    /* 96px */
+
+  /* Border Radii (Restrained architectural geometry) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+
+  /* Shadows (Subtle, non-glowing atmospheric depth) */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-atmospheric: 0 20px 50px -10px rgba(0, 0, 0, 0.55);
+}

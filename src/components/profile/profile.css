@@ -1,0 +1,523 @@
+/* ==========================================================================
+   SMARTMAZE — PLAYER PROFILE / DOSSIER SYSTEM (M11)
+   Sage + Sand Aesthetic — Deep Forest, Muted Sage, Warm Sand, Soft Ivory
+   ========================================================================== */
+
+.smartmaze-profile-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #f4f1ea;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Top Bar */
+.smartmaze-profile-topbar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: rgba(15, 23, 19, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.smartmaze-profile-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.smartmaze-profile-brand-icon {
+  color: #d4af37;
+  font-size: 1.2rem;
+}
+
+.smartmaze-profile-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Main Dossier Scroll View */
+.smartmaze-profile-main-stage {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  min-height: 0;
+  height: calc(100vh - 80px);
+  overflow-y: scroll !important;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  padding: 2rem 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge, and Opera */
+.smartmaze-profile-main-stage::-webkit-scrollbar,
+.smartmaze-profile-root::-webkit-scrollbar,
+.smartmaze-profile-glass-workspace::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* Glassmorphed Main Workspace Container */
+.smartmaze-profile-glass-workspace {
+  background: rgba(12, 18, 15, 0.78) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75),
+              inset 0 1px 1px rgba(255, 255, 255, 0.18),
+              0 0 45px rgba(212, 175, 55, 0.12) !important;
+  padding: 2.25rem !important;
+  margin-bottom: 2rem;
+  height: auto !important;
+  min-height: auto !important;
+  flex: none !important;
+  overflow: visible !important;
+}
+
+.smartmaze-profile-glass-workspace .smartmaze-glass-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Dossier Header Card */
+.smartmaze-dossier-header-card {
+  position: relative;
+  padding: 2rem 2.5rem;
+  background: rgba(18, 26, 22, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.smartmaze-dossier-user-info {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.smartmaze-dossier-avatar-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #d4af37 0%, #7a5f14 70%, #2a3d31 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #0f1713;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(212, 175, 55, 0.7);
+}
+
+.smartmaze-dossier-name-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.smartmaze-dossier-tag {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #d4af37;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.smartmaze-dossier-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.smartmaze-dossier-subtitle {
+  font-size: 0.9rem;
+  color: #c4d1bc;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.smartmaze-dossier-progress-ring-box {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.smartmaze-completion-stat-large {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.smartmaze-completion-percent-large {
+  font-family: 'Cinzel', serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #d4af37;
+  line-height: 1;
+  text-shadow: 0 0 24px rgba(212, 175, 55, 0.5);
+}
+
+.smartmaze-completion-percent-label {
+  font-family: monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #c4d1bc;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+/* Stats Section Grid */
+.smartmaze-profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.smartmaze-profile-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.smartmaze-profile-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.4) 0%, rgba(212, 175, 55, 0) 100%);
+}
+
+.smartmaze-stats-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.smartmaze-stat-card-dossier {
+  padding: 1.25rem 1.5rem;
+  background: rgba(20, 28, 24, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.smartmaze-stat-card-dossier:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.smartmaze-stat-card-icon {
+  font-size: 1.35rem;
+  color: #d4af37;
+}
+
+.smartmaze-stat-card-label {
+  font-family: monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  color: #c4d1bc;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.smartmaze-stat-card-val {
+  font-family: 'Cinzel', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+/* 20 Level Matrix Grid */
+.smartmaze-level-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.smartmaze-matrix-node-card {
+  padding: 1.1rem;
+  background: rgba(20, 28, 24, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.smartmaze-matrix-node-card--completed {
+  border-color: rgba(110, 231, 183, 0.45);
+  background: rgba(16, 36, 28, 0.9);
+}
+
+.smartmaze-matrix-node-card--unlocked {
+  border-color: rgba(212, 175, 55, 0.45);
+  background: rgba(24, 32, 27, 0.9);
+}
+
+.smartmaze-matrix-node-card--locked {
+  opacity: 0.65;
+  background: rgba(15, 20, 17, 0.65);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.smartmaze-matrix-node-card:hover:not(.smartmaze-matrix-node-card--locked) {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.smartmaze-matrix-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.smartmaze-matrix-level-num {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #d4af37;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.smartmaze-matrix-grade-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.smartmaze-matrix-level-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.smartmaze-matrix-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #d4e0ce;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Challenge Matrix Grid */
+.smartmaze-challenge-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.smartmaze-challenge-matrix-card {
+  padding: 1.35rem 1.5rem;
+  background: rgba(20, 28, 24, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.smartmaze-challenge-matrix-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+.smartmaze-ch-matrix-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.smartmaze-ch-matrix-icon {
+  font-size: 1.6rem;
+  color: #d4af37;
+}
+
+.smartmaze-ch-matrix-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.smartmaze-ch-matrix-sub {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #c4d1bc;
+  font-weight: 500;
+}
+
+/* Danger Zone Reset Panel */
+.smartmaze-profile-danger-panel {
+  padding: 1.75rem 2rem;
+  background: rgba(40, 16, 16, 0.82);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.smartmaze-danger-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  color: #fca5a5;
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+
+.smartmaze-danger-desc {
+  font-size: 0.85rem;
+  color: #fca5a5;
+  margin: 0;
+  font-weight: 500;
+}
+
+.smartmaze-danger-reset-btn {
+  padding: 0.75rem 1.6rem;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid #ef4444;
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-danger-reset-btn:hover {
+  background: rgba(239, 68, 68, 0.4);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Reset Confirmation Modal */
+.smartmaze-reset-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5, 10, 8, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.smartmaze-reset-modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(20, 10, 10, 0.95);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 18px;
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(239, 68, 68, 0.25);
+}
+
+.smartmaze-reset-modal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #fca5a5;
+  margin: 0;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.smartmaze-reset-modal-desc {
+  font-size: 0.88rem;
+  color: #f4f1ea;
+  line-height: 1.6;
+}
+
+.smartmaze-reset-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+

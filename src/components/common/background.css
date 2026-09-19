@@ -1,0 +1,142 @@
+/* ==========================================================================
+   SMARTMAZE CINEMATIC BACKGROUND SYSTEM STYLES
+   Visual Layering: Video -> Environmental Treatment -> Living Canvas -> UI
+   Strict Rule: Quiet, atmospheric, physical, no neon, no bright glows.
+   ========================================================================== */
+
+/* Full Viewport Fixed Background Container */
+.smartmaze-bg-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background-color: var(--color-deep-forest);
+}
+
+/* --------------------------------------------------------------------------
+   1. Video Layer & Treatment
+   -------------------------------------------------------------------------- */
+.smartmaze-bg-video-container {
+  position: absolute;
+  inset: -20px; /* Overbleed to prevent blurred edges from showing border */
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.smartmaze-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06) translateZ(0);
+  filter: contrast(0.95) saturate(0.78) blur(var(--bg-blur-amount, 8px));
+  transition: filter var(--duration-cinematic) var(--ease-camera-push),
+              transform var(--duration-cinematic) var(--ease-camera-push);
+  will-change: filter, transform;
+  backface-visibility: hidden;
+}
+
+.smartmaze-bg-video--camera-push {
+  transform: scale(1.22) translateZ(0) !important;
+  filter: contrast(0.96) saturate(0.82) blur(var(--bg-blur-amount, 3px)) !important;
+}
+
+/* --------------------------------------------------------------------------
+   2. Environmental Overlays
+   -------------------------------------------------------------------------- */
+/* Neutral Dark Shadow Environmental Overlay (No green/sage color cast) */
+.smartmaze-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(14, 18, 16, 0.40);
+  z-index: 2;
+  transition: opacity var(--duration-slow) var(--ease-cinematic);
+}
+
+/* Extremely Subtle Restrained Edge Vignette Overlay */
+.smartmaze-bg-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(6, 10, 8, 0.45) 100%
+  );
+  z-index: 3;
+}
+
+/* --------------------------------------------------------------------------
+   3. Fallback Environment (Used when video is unavailable or loading)
+   -------------------------------------------------------------------------- */
+.smartmaze-bg-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(34, 46, 38, 0.85) 0%,
+    rgba(16, 25, 20, 0.98) 70%,
+    var(--color-deep-forest) 100%
+  );
+  overflow: hidden;
+}
+
+/* Faint Organic/Architectural Lines in Fallback */
+.smartmaze-bg-fallback::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(216, 205, 184, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 205, 184, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.4;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 80%);
+}
+
+.smartmaze-bg-fallback::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(92, 112, 99, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Living Canvas Layer
+   -------------------------------------------------------------------------- */
+.smartmaze-bg-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility: Reduced Motion
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .smartmaze-bg-video {
+    transform: scale(1.02) !important;
+    transition: none !important;
+  }
+
+  .smartmaze-bg-fallback::before {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,151 @@
+/* ==========================================================================
+   SMARTMAZE GLOBAL FOUNDATION
+   Desktop-First CSS Reset & Accessible Baseline Rules
+   ========================================================================== */
+
+@import './tokens.css';
+@import './typography.css';
+@import './animations.css';
+
+/* --------------------------------------------------------------------------
+   Box Sizing & Universal Reset
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Document Defaults & Layout Core
+   -------------------------------------------------------------------------- */
+html {
+  font-size: 16px;
+  background-color: var(--color-deep-forest);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-deep-forest);
+  color: var(--color-warm-sand);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  overflow-x: hidden;
+  position: relative;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23e8ba7a' d='M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9Z' opacity='0.85'/%3E%3Ccircle cx='12' cy='12' r='2' fill='%23ffffff'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+button, a, input, select, [role="button"], [tabindex], .smartmaze-option-tile, .smartmaze-sidebar-item, .smartmaze-header-settings-btn {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath fill='%23e8ba7a' stroke='%23ffffff' stroke-width='1.5' d='M14 2L18 10L26 14L18 18L14 26L10 18L2 14L10 10Z'/%3E%3Ccircle cx='14' cy='14' r='3' fill='%23ffffff'/%3E%3C/svg%3E") 14 14, pointer !important;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   Text Selection & Focus Baseline
+   -------------------------------------------------------------------------- */
+::selection {
+  background-color: rgba(92, 112, 99, 0.45);
+  color: var(--color-soft-ivory);
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-warm-sand);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* --------------------------------------------------------------------------
+   Form & Element Resets
+   -------------------------------------------------------------------------- */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Utility Surfaces & Open Space Structure
+   -------------------------------------------------------------------------- */
+.surface-secondary {
+  background-color: var(--surface-secondary-bg);
+  border: 1px solid var(--surface-secondary-border);
+  backdrop-filter: blur(var(--surface-blur-radius));
+  -webkit-backdrop-filter: blur(var(--surface-blur-radius));
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-tactile),
+              background-color var(--duration-fast) var(--ease-tactile);
+}
+
+.surface-secondary:hover {
+  background-color: var(--surface-secondary-bg-hover);
+  border-color: var(--surface-secondary-border-hover);
+}
+
+.line-divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--line-accent) 50%,
+    transparent 100%
+  );
+}
+
+/* Visually Hidden Utility for Screen Readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

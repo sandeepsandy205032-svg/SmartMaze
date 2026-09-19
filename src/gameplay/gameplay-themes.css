@@ -1,0 +1,78 @@
+/* ==========================================================================
+   SMARTMAZE THEME MATERIAL PALETTES (Phase 2A Presentation)
+   Theme affects presentation ONLY (environment artwork, UI accent treatment,
+   maze materials, maze lighting, atmospheric effects).
+   Geometry and puzzle logic remain independent.
+   ========================================================================== */
+
+/* THE OUTER MAZE MATERIAL (Weathered Sandstone & Moss) */
+.material-outer-maze {
+  --wall-top-color: #3f4e42;
+  --wall-front-color: #27342b;
+  --wall-side-color: #1a241d;
+  --wall-border-color: rgba(216, 205, 184, 0.16);
+  --wall-shadow-color: rgba(0, 0, 0, 0.65);
+  --floor-bg: #141a16;
+  --floor-grid: rgba(216, 205, 184, 0.05);
+  --theme-accent-glow: rgba(200, 159, 101, 0.7);
+}
+
+.theme-outer-maze {
+  --theme-bg-base: #0f1612;
+  --theme-accent: #c89f65;
+  --theme-fog-color: rgba(92, 112, 99, 0.16);
+}
+
+/* THE INNER GARDENS MATERIAL (Green Garden Masonry & Vines) */
+.material-inner-gardens {
+  --wall-top-color: #314a3a;
+  --wall-front-color: #1f3326;
+  --wall-side-color: #122118;
+  --wall-border-color: rgba(120, 163, 139, 0.22);
+  --wall-shadow-color: rgba(0, 0, 0, 0.7);
+  --floor-bg: #111a14;
+  --floor-grid: rgba(120, 163, 139, 0.06);
+  --theme-accent-glow: rgba(120, 163, 139, 0.75);
+}
+
+.theme-inner-gardens {
+  --theme-bg-base: #0a120e;
+  --theme-accent: #78a38b;
+  --theme-fog-color: rgba(46, 68, 56, 0.2);
+}
+
+/* THE FORGOTTEN STRUCTURE MATERIAL (Monumental Aged Bronze & Stone) */
+.material-forgotten-structure {
+  --wall-top-color: #473d34;
+  --wall-front-color: #2e2620;
+  --wall-side-color: #1d1813;
+  --wall-border-color: rgba(212, 163, 89, 0.2);
+  --wall-shadow-color: rgba(0, 0, 0, 0.75);
+  --floor-bg: #171310;
+  --floor-grid: rgba(212, 163, 89, 0.06);
+  --theme-accent-glow: rgba(212, 163, 89, 0.8);
+}
+
+.theme-forgotten-structure {
+  --theme-bg-base: #14110e;
+  --theme-accent: #d4a359;
+  --theme-fog-color: rgba(180, 130, 70, 0.12);
+}
+
+/* THE DEEP MAZE MATERIAL (Charcoal Subterranean Stone & Amber Accents) */
+.material-deep-maze {
+  --wall-top-color: #2a332e;
+  --wall-front-color: #18201b;
+  --wall-side-color: #0e1411;
+  --wall-border-color: rgba(180, 190, 185, 0.14);
+  --wall-shadow-color: rgba(0, 0, 0, 0.88);
+  --floor-bg: #0c0e0d;
+  --floor-grid: rgba(180, 190, 185, 0.04);
+  --theme-accent-glow: rgba(192, 154, 103, 0.7);
+}
+
+.theme-deep-maze {
+  --theme-bg-base: #080a09;
+  --theme-accent: #c09a67;
+  --theme-fog-color: rgba(10, 14, 12, 0.4);
+}

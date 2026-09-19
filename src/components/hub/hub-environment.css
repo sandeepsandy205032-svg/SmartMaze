@@ -1,0 +1,125 @@
+/* ==========================================================================
+   SMARTMAZE HUB ENVIRONMENT SYSTEM STYLES
+   16:9 Labyrinth image foundation with natural stone tones & ambient drift.
+   ========================================================================== */
+
+.smartmaze-hub-env-root {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  background-color: var(--color-deep-forest);
+  opacity: 0;
+  animation: hubFadeIn 1000ms var(--ease-cinematic) forwards;
+}
+
+@keyframes hubFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 16:9 Labyrinth Image Layer */
+.smartmaze-hub-env-image-wrapper {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  overflow: hidden;
+}
+
+.smartmaze-hub-env-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  filter: contrast(0.96) saturate(0.95);
+  animation: hubAmbientDrift 36s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Subconscious ambient camera drift */
+@keyframes hubAmbientDrift {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.08) translate(-0.4%, -0.3%);
+  }
+  100% {
+    transform: scale(1.05) translate(0.3%, -0.2%);
+  }
+}
+
+/* Environmental Overlays (Natural charcoal shadow & restrained vignette) */
+.smartmaze-hub-env-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 18, 16, 0.35) 0%,
+    rgba(10, 14, 12, 0.20) 50%,
+    rgba(12, 16, 14, 0.40) 100%
+  );
+  z-index: 2;
+  transition: opacity var(--duration-slow) var(--ease-cinematic);
+}
+
+.smartmaze-hub-env-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(8, 12, 10, 0.55) 100%
+  );
+  z-index: 3;
+}
+
+/* Mode Specific Environmental Tone Adjustments (Foundation) */
+.smartmaze-hub-env--play .smartmaze-hub-env-image {
+  filter: contrast(0.98) saturate(1.05); /* Warm path emphasis */
+}
+
+.smartmaze-hub-env--create .smartmaze-hub-env-image {
+  filter: contrast(0.94) saturate(0.88); /* Grid construction focus */
+}
+
+.smartmaze-hub-env--lab .smartmaze-hub-env-image {
+  filter: contrast(0.96) saturate(0.90); /* Exploration pattern focus */
+}
+
+.smartmaze-hub-env--settings .smartmaze-hub-env-image {
+  filter: contrast(0.92) saturate(0.80); /* Calmer environment */
+}
+
+/* Smooth 900ms Theme Cross-Fade Transition */
+.smartmaze-hub-env-image-wrapper {
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+.smartmaze-env-transitioning {
+  opacity: 0.2;
+  filter: blur(8px) saturate(0.5);
+}
+
+/* Accessibility: Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .smartmaze-hub-env-root {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .smartmaze-hub-env-image {
+    animation: none !important;
+    transform: scale(1.05) !important;
+  }
+
+  .smartmaze-hub-env-image-wrapper {
+    transition: opacity 0.1s ease !important;
+  }
+}
+

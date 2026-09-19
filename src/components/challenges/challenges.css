@@ -1,0 +1,410 @@
+/* Keyframe Animations for Cinematic Screen Opening & Card Cascade */
+@keyframes challengesScreenEnter {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes challengeCardCascade {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.smartmaze-challenges-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: #F4F1EA;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  animation: challengesScreenEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Minimal Top Bar (No Sidebar) */
+.smartmaze-challenges-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  z-index: 10;
+}
+
+.smartmaze-brand-logo {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  color: #F4F1EA;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #F4F1EA 0%, #D4CEB8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.smartmaze-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 1rem;
+  background: rgba(28, 38, 32, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 206, 184, 0.2);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  color: #D4CEB8;
+}
+
+.smartmaze-profile-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #D4AF37 0%, #8C7323 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #0F1713;
+}
+
+/* Main Cinematic Stage */
+.smartmaze-challenges-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem 2rem 2rem;
+  z-index: 10;
+  overflow-y: auto;
+}
+
+/* Title Block */
+.smartmaze-challenges-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.smartmaze-challenges-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #F4F1EA;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 24px rgba(212, 175, 55, 0.25);
+}
+
+.smartmaze-challenges-subtitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: #9BA495;
+  text-transform: uppercase;
+}
+
+/* 2 x 3 Challenge Grid */
+.smartmaze-challenges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 440px));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 920px;
+}
+
+/* Individual Challenge Card */
+.smartmaze-challenge-card {
+  position: relative;
+  background: rgba(22, 32, 26, 0.65);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 206, 184, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  overflow: hidden;
+  animation: challengeCardCascade 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.smartmaze-challenge-card:nth-child(1) { animation-delay: 0.08s; }
+.smartmaze-challenge-card:nth-child(2) { animation-delay: 0.14s; }
+.smartmaze-challenge-card:nth-child(3) { animation-delay: 0.20s; }
+.smartmaze-challenge-card:nth-child(4) { animation-delay: 0.26s; }
+.smartmaze-challenge-card:nth-child(5) { animation-delay: 0.32s; }
+.smartmaze-challenge-card:nth-child(6) { animation-delay: 0.38s; }
+
+.smartmaze-challenge-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+  background: rgba(28, 40, 33, 0.75);
+}
+
+.smartmaze-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.smartmaze-challenge-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #D4AF37;
+}
+
+.smartmaze-challenge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: rgba(212, 206, 184, 0.08);
+  border: 1px solid rgba(212, 206, 184, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.smartmaze-challenge-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #F4F1EA;
+  margin: 0 0 0.4rem 0;
+}
+
+.smartmaze-challenge-desc {
+  font-size: 0.825rem;
+  line-height: 1.45;
+  color: #A8B2A1;
+  margin-bottom: 1.25rem;
+}
+
+.smartmaze-card-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(212, 206, 184, 0.1);
+}
+
+.smartmaze-best-result {
+  font-size: 0.75rem;
+  color: #8C9985;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.smartmaze-best-rank {
+  font-weight: 700;
+  color: #D4AF37;
+}
+
+.smartmaze-enter-btn {
+  padding: 0.45rem 0.9rem;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #E8C868;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-challenge-card:hover .smartmaze-enter-btn {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+}
+
+/* Footer Quote */
+.smartmaze-challenges-footer {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  color: #8C9985;
+  text-align: center;
+}
+
+/* Challenge Brief Modal / Overlay */
+.smartmaze-brief-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 12, 0.82);
+  backdrop-filter: blur(12px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.smartmaze-brief-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(22, 32, 26, 0.92);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.smartmaze-brief-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #F4F1EA;
+  margin: 0 0 0.5rem 0;
+}
+
+.smartmaze-brief-tagline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #D4AF37;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.smartmaze-brief-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.smartmaze-stat-box {
+  background: rgba(15, 23, 19, 0.6);
+  border: 1px solid rgba(212, 206, 184, 0.15);
+  border-radius: 8px;
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.smartmaze-stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #8C9985;
+  text-transform: uppercase;
+}
+
+.smartmaze-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #F4F1EA;
+}
+
+.smartmaze-level-select-row {
+  width: 100%;
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+.smartmaze-level-select-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #A8B2A1;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.smartmaze-level-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.smartmaze-level-chip {
+  padding: 0.4rem 0.75rem;
+  background: rgba(28, 40, 33, 0.6);
+  border: 1px solid rgba(212, 206, 184, 0.2);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #D4CEB8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-level-chip--active {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #D4AF37;
+  color: #FFF;
+}
+
+.smartmaze-brief-actions {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.smartmaze-begin-btn {
+  flex: 2;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #D4AF37 0%, #AA8518 100%);
+  border: none;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: #0F1713;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-begin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+}
+
+.smartmaze-back-btn {
+  flex: 1;
+  padding: 0.85rem;
+  background: rgba(28, 40, 33, 0.6);
+  border: 1px solid rgba(212, 206, 184, 0.2);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: #D4CEB8;
+  cursor: pointer;
+}

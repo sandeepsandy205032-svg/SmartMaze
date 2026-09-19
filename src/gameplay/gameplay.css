@@ -1,0 +1,1202 @@
+/* ==========================================================================
+   SMARTMAZE GAMEPLAY PRESENTATION STYLES (Phase 2A Visual Core Upgrade)
+   ========================================================================== */
+
+/* Full-Screen Gameplay Environment Container */
+.smartmaze-gameplay-environment {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--theme-bg-base);
+  color: var(--color-soft-ivory);
+  font-family: 'Inter', system-ui, sans-serif;
+  user-select: none;
+}
+
+/* Selected Theme Background Artwork Layer (Subdued Hero Focus) */
+.smartmaze-gameplay-art-wrapper {
+  position: absolute;
+  inset: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  overflow: hidden;
+  z-index: 1;
+  transition: opacity 0.45s ease, filter 0.45s ease;
+}
+
+.smartmaze-gameplay-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  filter: brightness(0.65) contrast(0.92) saturate(0.85);
+  animation: gameplayArtDrift 40s ease-in-out infinite alternate;
+}
+
+.smartmaze-gameplay-art-img--static {
+  animation: none !important;
+  transform: scale(1.05) !important;
+}
+
+/* Depth Fog & Radial Vignette Overlay */
+.smartmaze-gameplay-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(12, 16, 14, 0.45) 0%, rgba(6, 9, 7, 0.88) 100%);
+}
+
+.smartmaze-env-fog-layer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 35%, var(--theme-fog-color) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.smartmaze-art-transitioning {
+  opacity: 0.2;
+  filter: blur(8px) saturate(0.5);
+}
+
+@keyframes gameplayArtDrift {
+  0% { transform: scale(1.05) translate(0, 0); }
+  50% { transform: scale(1.08) translate(-0.3%, -0.2%); }
+  100% { transform: scale(1.05) translate(0.2%, -0.3%); }
+}
+
+.smartmaze-gameplay-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL TOP HUD HEADER BAR
+   ========================================================================== */
+
+.smartmaze-hud-bar {
+  width: 100%;
+  max-width: 1240px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  background: rgba(18, 24, 20, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(216, 205, 184, 0.16);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(216, 205, 184, 0.2);
+  z-index: 30;
+}
+
+.smartmaze-hud-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.smartmaze-hud-brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-hud-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-warm-sand);
+  line-height: 1;
+}
+
+.smartmaze-hud-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--color-muted-sage);
+  margin-top: 0.2rem;
+}
+
+.smartmaze-hud-center-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.4rem 1.25rem;
+  background: rgba(200, 159, 101, 0.08);
+  border: 1px solid rgba(200, 159, 101, 0.22);
+  border-radius: var(--radius-pill);
+}
+
+.smartmaze-hud-level-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-hud-rule-desc {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--theme-accent);
+}
+
+.smartmaze-hud-stats-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.smartmaze-hud-stat-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(216, 205, 184, 0.12);
+  border-radius: var(--radius-sm);
+}
+
+.smartmaze-stat-icon {
+  font-size: 0.9rem;
+}
+
+.smartmaze-stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  color: rgba(244, 242, 235, 0.45);
+}
+
+.smartmaze-stat-value {
+  font-family: monospace, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-hud-pause-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(216, 205, 184, 0.18);
+  border-radius: var(--radius-sm);
+  color: var(--color-warm-sand);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.smartmaze-hud-pause-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-soft-ivory);
+  border-color: var(--color-antique-amber);
+}
+
+.smartmaze-hud-motion-toggle {
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(216, 205, 184, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--color-muted-sage);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.smartmaze-motion--active {
+  color: var(--color-antique-amber);
+  border-color: rgba(200, 159, 101, 0.3);
+}
+
+/* ==========================================================================
+   GAMEPLAY STAGE & RESPONSIVE VERTICAL CENTERING
+   ========================================================================== */
+
+.smartmaze-gameplay-stage {
+  display: grid;
+  grid-template-columns: 240px 1fr 240px;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1360px;
+  height: calc(100vh - 120px);
+  align-items: center;
+  justify-content: center;
+  margin: auto 0;
+  box-sizing: border-box;
+}
+
+.smartmaze-stage-left,
+.smartmaze-stage-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.smartmaze-stage-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.smartmaze-maze-chamber {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  height: 100%;
+  max-height: 640px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  box-shadow: 0 35px 90px -10px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(216, 205, 184, 0.2);
+  overflow: hidden;
+}
+
+.smartmaze-cinematic-banner-overlay {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 40;
+  padding: 0.55rem 1.65rem;
+  background: rgba(14, 20, 16, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(232, 186, 122, 0.35);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(200, 159, 101, 0.25);
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.smartmaze-cinematic-banner-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-stage-bottom-quote {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--color-muted-sage);
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   CONTROLLED 2.5D/3D ISOMETRIC LABYRINTH RENDERER
+   ========================================================================== */
+
+.smartmaze-camera-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.smartmaze-camera-world {
+  position: relative;
+  will-change: transform;
+}
+
+.smartmaze-grid-container {
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9);
+  background: var(--floor-bg);
+  transform-style: preserve-3d;
+  /* Top-Down 3D Perspective Angle for Maximum Readability & Vertical Standing Walls */
+  transform: rotateX(18deg) rotateZ(0deg);
+}
+
+.smartmaze-cell {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Standing 3D Extruded Wall Block */
+.smartmaze-cell--wall-3d {
+  position: relative;
+  z-index: 5;
+  transform-style: preserve-3d;
+}
+
+.smartmaze-wall-block-3d {
+  position: absolute;
+  inset: 0;
+  background-color: var(--wall-front-color);
+  border-radius: 3px;
+  box-shadow: var(--wall-shadow-color);
+  transform-style: preserve-3d;
+}
+
+/* Staggered Falling Walls Drop Animation */
+.smartmaze-wall-block-3d--falling {
+  animation: wallFallDrop 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes wallFallDrop {
+  0% {
+    transform: translateZ(260px) scale(1.3);
+    opacity: 0;
+    filter: blur(4px);
+  }
+  75% {
+    transform: translateZ(32px) scale(1.03);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: translateZ(32px) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Standing Wall Top Face with Architectural Bevel & Ambient Highlight */
+.smartmaze-wall-top-face {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--wall-top-color) 0%, var(--wall-front-color) 100%);
+  border-top: 1.5px solid rgba(244, 242, 235, 0.25);
+  border-left: 1.5px solid rgba(244, 242, 235, 0.18);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  transform: translateZ(32px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Standing Wall Front & Side Faces */
+.smartmaze-wall-front-face {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(180deg, var(--wall-front-color) 0%, rgba(12, 18, 14, 0.95) 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+}
+
+.smartmaze-wall-side-face {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(90deg, var(--wall-side-color) 0%, rgba(10, 15, 12, 0.95) 100%);
+  transform-origin: right;
+  transform: rotateY(90deg);
+}
+
+/* Soft Contact Drop Shadow */
+.smartmaze-wall-contact-shadow {
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.75) 0%, transparent 70%);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Recessed Walkable Floor Tiles */
+.smartmaze-cell--path-3d {
+  background-color: var(--floor-bg);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.45);
+}
+
+.smartmaze-floor-tile {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--floor-grid);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Markers & Mechanisms */
+.smartmaze-marker-3d {
+  position: absolute;
+  inset: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.smartmaze-marker-rune {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--color-warm-sand);
+  z-index: 2;
+}
+
+.smartmaze-marker--start-3d {
+  background: rgba(92, 112, 99, 0.18);
+  border: 1px dashed rgba(92, 112, 99, 0.5);
+  border-radius: 4px;
+}
+
+/* Goal Architectural Structure */
+.smartmaze-marker--goal-3d {
+  position: relative;
+}
+
+.smartmaze-goal-light-ring-outer {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--theme-accent);
+  box-shadow: 0 0 20px var(--theme-accent);
+  animation: goalPulse 2.4s infinite ease-in-out;
+}
+
+.smartmaze-goal-light-ring-inner {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px dashed var(--color-warm-sand);
+}
+
+.smartmaze-goal-crystal-core {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--theme-accent);
+  box-shadow: 0 0 20px var(--theme-accent);
+}
+
+@keyframes goalPulse {
+  0% { transform: scale(0.7); opacity: 0.8; }
+  50% { transform: scale(1.25); opacity: 0.3; }
+  100% { transform: scale(0.7); opacity: 0.8; }
+}
+
+/* Mechanisms: Switch & Gate */
+.smartmaze-mechanism-3d {
+  position: absolute;
+  inset: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  z-index: 12;
+}
+
+.smartmaze-switch-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.5rem;
+  background: rgba(35, 48, 39, 0.8);
+  border: 1px solid rgba(216, 205, 184, 0.25);
+  border-radius: 4px;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-mechanism--switch-active-3d .smartmaze-switch-plate {
+  background: rgba(200, 159, 101, 0.35);
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+  box-shadow: 0 0 20px var(--theme-accent);
+}
+
+.smartmaze-mechanism-label-3d {
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+  opacity: 0.75;
+}
+
+/* State-Change Wall & Ghost Floor Mark */
+.smartmaze-wall-block-3d--statechange {
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.smartmaze-statechange-floor-ghost {
+  position: absolute;
+  inset: 2px;
+  border: 1px dashed rgba(245, 158, 11, 0.35);
+  border-radius: 4px;
+  background: rgba(245, 158, 11, 0.05);
+  pointer-events: none;
+}
+
+.smartmaze-mechanism--statechange-3d .smartmaze-switch-plate {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.6);
+  color: #f59e0b;
+}
+
+.smartmaze-statechange-active .smartmaze-switch-plate {
+  background: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+}
+
+/* Temporary Path */
+.smartmaze-mechanism--temp-path-3d {
+  background: rgba(14, 20, 16, 0.7);
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.smartmaze-temp-path--active {
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+.smartmaze-temp-path--inactive {
+  border: 1px dashed rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.smartmaze-temp-countdown {
+  font-size: 0.55rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.smartmaze-temp-expired {
+  font-size: 0.48rem;
+  font-weight: 700;
+  color: #ef4444;
+  letter-spacing: 0.05em;
+}
+
+.smartmaze-mechanism--temp-trigger-3d .smartmaze-switch-plate {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: rgba(56, 189, 248, 0.6);
+  color: #38bdf8;
+}
+
+/* Hidden Path */
+.smartmaze-mechanism--hidden-trigger-3d .smartmaze-switch-plate {
+  background: rgba(52, 211, 153, 0.2);
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #34d399;
+}
+
+.smartmaze-mechanism--hidden-revealed-3d {
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.4);
+  border-radius: 4px;
+  color: #34d399;
+}
+
+/* Sequence Locks */
+.smartmaze-mechanism--sequence-3d {
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 4px;
+}
+
+.smartmaze-sequence--active {
+  background: rgba(52, 211, 153, 0.25);
+  border-color: #34d399;
+}
+
+.smartmaze-sequence--target {
+  border-color: #fbbf24;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+  animation: sequencePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes sequencePulse {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(0.95); }
+}
+
+.smartmaze-sequence-rune-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.smartmaze-sequence--active .smartmaze-sequence-rune-badge {
+  color: #34d399;
+}
+
+/* Stone Gate */
+.smartmaze-mechanism--gate-3d {
+  background: var(--wall-front-color);
+  border: 1px solid var(--wall-border-color);
+}
+
+.smartmaze-gate-structure {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.smartmaze-gate-bar-v {
+  width: 4px;
+  height: 22px;
+  background: rgba(240, 150, 150, 0.8);
+  border-radius: 2px;
+}
+
+.smartmaze-mechanism--gate-open-3d {
+  opacity: 0.3;
+  transform: translateY(12px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* ==========================================================================
+   LUMINOUS PLAYER ORB WITH LOCAL SURFACE LIGHT MASK
+   ========================================================================== */
+
+.smartmaze-orb-ambient-light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--theme-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 15;
+  will-change: transform;
+}
+
+.smartmaze-player-orb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+  z-index: 22;
+  will-change: transform;
+}
+
+.smartmaze-orb-core {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, #ffffff 0%, #f4f2eb 40%, #c89f65 85%, #8fa394 100%);
+  box-shadow: 0 0 12px rgba(244, 242, 235, 0.85), 0 0 22px rgba(200, 159, 101, 0.55), inset -2px -2px 4px rgba(0, 0, 0, 0.35);
+  animation: orbBreathe 3.2s infinite ease-in-out;
+}
+
+.smartmaze-orb-halo {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 186, 122, 0.45) 0%, rgba(200, 159, 101, 0.15) 50%, transparent 70%);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.smartmaze-orb-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px dashed rgba(232, 186, 122, 0.55);
+  animation: orbRotate 12s linear infinite;
+}
+
+.smartmaze-player-orb--moving .smartmaze-orb-halo {
+  opacity: 0.85;
+  transform: scale(1.15);
+}
+
+.smartmaze-player-orb--moving .smartmaze-orb-core {
+  box-shadow: 0 0 16px rgba(244, 242, 235, 0.95), 0 0 28px rgba(200, 159, 101, 0.75), inset -2px -2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.smartmaze-orb-trail-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-warm-sand);
+  box-shadow: 0 0 10px rgba(200, 159, 101, 0.4);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.smartmaze-player-orb--reduced-motion .smartmaze-orb-core,
+.smartmaze-player-orb--reduced-motion .smartmaze-orb-ring {
+  animation: none !important;
+}
+
+@keyframes orbRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbBreathe {
+  0% { transform: scale(1); opacity: 0.95; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.95; }
+}
+
+/* ==========================================================================
+   SECONDARY SIDE PANELS & MINIMAP STYLES
+   ========================================================================== */
+
+.smartmaze-side-panel {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.smartmaze-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.smartmaze-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.smartmaze-legend-symbol {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(216, 205, 184, 0.15);
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-sym--orb {
+  border-radius: 50%;
+  background: var(--color-soft-ivory);
+  box-shadow: 0 0 10px var(--color-antique-amber);
+}
+
+.smartmaze-legend-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-sym-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-sym-desc {
+  font-size: 0.65rem;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-panel-footer {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted-sage);
+  margin-top: 0.5rem;
+}
+
+/* Controls Panel Diagram */
+.smartmaze-controls-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.smartmaze-wasd-grid,
+.smartmaze-arrows-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.smartmaze-key-row,
+.smartmaze-arrow-row {
+  display: flex;
+  gap: 4px;
+}
+
+.smartmaze-key-cap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(216, 205, 184, 0.2);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-warm-sand);
+}
+
+.smartmaze-key-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted-sage);
+  margin-top: 2px;
+}
+
+.smartmaze-controls-divider {
+  font-size: 0.65rem;
+  color: rgba(216, 205, 184, 0.3);
+}
+
+/* Minimap Frame */
+.smartmaze-minimap-container {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.smartmaze-minimap-grid {
+  display: grid;
+  width: 140px;
+  height: 140px;
+  background: #0d120f;
+  border: 1px solid rgba(216, 205, 184, 0.15);
+  border-radius: 6px;
+  padding: 4px;
+  gap: 1px;
+}
+
+.smartmaze-mini-path { background: rgba(255, 255, 255, 0.03); }
+.smartmaze-mini-wall { background: rgba(92, 112, 99, 0.35); }
+.smartmaze-mini-player { background: var(--color-soft-ivory); box-shadow: 0 0 8px var(--color-antique-amber); }
+.smartmaze-mini-goal { background: var(--color-antique-amber); }
+.smartmaze-minimap-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.16em; color: var(--color-muted-sage); }
+
+/* ==========================================================================
+   CINEMATIC ENTRANCE & LEVEL COMPLETION OVERLAYS
+   ========================================================================== */
+
+.smartmaze-entering-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 90;
+  animation: fadeOutSequence 0.85s ease-in-out forwards;
+}
+
+.smartmaze-entering-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 11, 0.92);
+  backdrop-filter: blur(24px);
+}
+
+.smartmaze-entering-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.smartmaze-entering-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-entering-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-soft-ivory);
+  margin: 0.4rem 0;
+}
+
+.smartmaze-entering-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-board-reveal {
+  animation: boardTiltReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Keypress Visual Feedback Highlight */
+.smartmaze-key-cap {
+  transition: all 0.15s ease;
+}
+
+.smartmaze-key-cap--pressed {
+  background: var(--color-antique-amber) !important;
+  color: #101411 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(232, 186, 122, 0.95), 0 0 8px rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(2px) scale(0.94) !important;
+}
+
+/* Victory Completion Modal Overlay */
+.smartmaze-completion-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.45s ease-out forwards;
+}
+
+.smartmaze-completion-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 10, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.smartmaze-completion-modal {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+  padding: 2.75rem 3.25rem;
+  background: linear-gradient(160deg, rgba(24, 32, 27, 0.95) 0%, rgba(14, 20, 16, 0.98) 100%);
+  border: 1px solid rgba(216, 205, 184, 0.25);
+  border-radius: 24px;
+  box-shadow: 0 35px 100px rgba(0, 0, 0, 0.9), 0 0 60px rgba(200, 159, 101, 0.25), inset 0 1px 0 rgba(232, 186, 122, 0.4);
+  text-align: center;
+  max-width: 540px;
+  width: 90%;
+  overflow: hidden;
+  animation: modalScaleGlow 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.smartmaze-comp-top-flare {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 80px;
+  background: radial-gradient(ellipse at center, rgba(232, 186, 122, 0.4), transparent 70%);
+  pointer-events: none;
+}
+
+.smartmaze-completion-crest {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.smartmaze-rating-badge-outer {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(232, 186, 122, 0.9) 0%, rgba(180, 135, 75, 0.9) 100%);
+  padding: 2px;
+  box-shadow: 0 0 25px rgba(232, 186, 122, 0.6);
+}
+
+.smartmaze-rating-badge-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(14, 20, 16, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smartmaze-rating-letter {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-antique-amber);
+  line-height: 1;
+}
+
+.smartmaze-rating-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--color-warm-sand);
+  opacity: 0.85;
+}
+
+.smartmaze-comp-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.smartmaze-comp-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.26em;
+  color: var(--color-antique-amber);
+}
+
+.smartmaze-completion-title {
+  font-family: var(--font-display-cinzel), serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-soft-ivory);
+  margin: 0;
+}
+
+.smartmaze-completion-subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-completion-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.smartmaze-comp-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(216, 205, 184, 0.14);
+  border-radius: 12px;
+  text-align: left;
+}
+
+.smartmaze-comp-stat-icon {
+  font-size: 1.1rem;
+}
+
+.smartmaze-comp-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.smartmaze-comp-stat-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  color: var(--color-muted-sage);
+}
+
+.smartmaze-comp-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-soft-ivory);
+}
+
+.smartmaze-completion-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.smartmaze-comp-quote {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--color-warm-sand);
+  opacity: 0.65;
+}
+
+@keyframes fadeOutSequence {
+  0% { opacity: 1; }
+  65% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+@media (max-width: 1100px) {
+  .smartmaze-gameplay-stage {
+    grid-template-columns: 1fr;
+  }
+  .smartmaze-stage-left,
+  .smartmaze-stage-right {
+    display: none;
+  }
+}
+
+/* Reduced Motion Accessibility Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .smartmaze-camera-world,
+  .smartmaze-wall-block-3d,
+  .smartmaze-gameplay-art-img {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  .smartmaze-wall-block-3d--falling {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
